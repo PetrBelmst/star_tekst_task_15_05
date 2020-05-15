@@ -5,7 +5,9 @@ import com.example.demo.model.EntityObject;
 import java.util.List;
 import java.util.Optional;
 
-public class CommentService implements AnyEntityObjectService{
+public class EntityObjectServiceImpl implements EntityObjectService {
+
+
     @Override
     public void create(EntityObject object) {
 
@@ -22,12 +24,15 @@ public class CommentService implements AnyEntityObjectService{
     }
 
     @Override
-    public void update() {
+    public void update(Long id) {
 
     }
+
 
     @Override
     public void delete(Long id) {
 
     }
+
+
 }
