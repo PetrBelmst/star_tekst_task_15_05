@@ -23,16 +23,16 @@ public class Comment implements EntityObject {
     @Type(type = "uuid-char")
     private UUID ID;
 
+    @Column(name = "ARTEFACT_ID", updatable = false, nullable = false)
     private UUID ArtefactID;
 
     @Column(name = "User_ID", updatable = false, nullable = false)
     private String UserID;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Artefact artefact;
+
     private String Content;
-
-
-
-
 
 
 }

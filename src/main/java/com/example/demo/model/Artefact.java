@@ -7,6 +7,9 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -20,7 +23,7 @@ public class Artefact implements EntityObject {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "ID", updatable = false, nullable = false)
+    @Column(name = "ARTEFACT_ID", updatable = false, nullable = false)
     @Type(type = "uuid-char")
     private UUID ID;
 
@@ -29,6 +32,10 @@ public class Artefact implements EntityObject {
 
     @Column(name = "User_ID", updatable = false, nullable = false)
     private String UserID;
+
+    @OneToMany(mappedBy = "ARTEFACT")
+    @JoinColumn(name = "ARTEFACT_ID")
+    private List<Comment> commentList = new ArrayList<>();
 
     private String Category;
     private String Description;
