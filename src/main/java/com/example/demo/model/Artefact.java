@@ -37,6 +37,16 @@ public class Artefact implements EntityObject {
     @JoinColumn(name = "ARTEFACT_ID")
     private List<Comment> commentList = new ArrayList<>();
 
+    public void addComment(Comment comment) {
+        commentList.add(comment);
+        comment.setArtefact(this);
+        comment.setArtefactID(this.getID());
+    }
+
+    public void removeComment(Comment comment) {
+        commentList.remove(comment);
+    }
+
     private String Category;
     private String Description;
 
