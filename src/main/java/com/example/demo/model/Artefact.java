@@ -30,24 +30,13 @@ public class Artefact implements EntityObject {
     @Column(name = "Creation_Time", updatable = false, nullable = false)
     private LocalDateTime Created;
 
-    @Column(name = "User_ID", updatable = false, nullable = false)
+    @Column(name = "User_ID", nullable = false)
     private String UserID;
 
-    @OneToMany(mappedBy = "ARTEFACT")
-    @JoinColumn(name = "ARTEFACT_ID")
-    private List<Comment> commentList = new ArrayList<>();
-
-    public void addComment(Comment comment) {
-        commentList.add(comment);
-        comment.setArtefact(this);
-        comment.setArtefactID(this.getID());
-    }
-
-    public void removeComment(Comment comment) {
-        commentList.remove(comment);
-    }
-
+    @Column(name = "Category", nullable = false)
     private String Category;
+
+    @Column(name = "Description", nullable = false)
     private String Description;
 
 }

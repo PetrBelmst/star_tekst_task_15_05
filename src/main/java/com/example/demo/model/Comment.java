@@ -30,6 +30,7 @@ public class Comment implements EntityObject {
     private String UserID;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ARTEFACT_ID")
     private Artefact artefact;
 
     private String Content;
