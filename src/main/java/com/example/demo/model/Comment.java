@@ -35,10 +35,7 @@ public class Comment implements EntityObject {
 
     private String Content;
 
-    @Transient
-    private static final String TYPE = "COMMENT";
-
     @Column(name = "Was_Updated", nullable = false)
-    private boolean isChanged = false;
+    private boolean isOriginal = false;
 
 }

@@ -51,11 +51,9 @@ public class Artefact implements EntityObject {
     public void removeComment(Comment comment) {
         commentList.remove(comment);
     }
-    @Transient
-    private static final String TYPE = "ARTEFACT";
 
     @Column(name = "Was_Updated", nullable = false)
-    private boolean isChanged = false;
+    private boolean isOriginal = true;
 
 }
 
