@@ -39,6 +39,19 @@ public class Artefact implements EntityObject {
     @Column(name = "Description", nullable = false)
     private String Description;
 
+    @Transient
+    private List<Comment> commentList = new ArrayList<>();
+
+    public void addComment(Comment comment) {
+        commentList.add(comment);
+        comment.setArtefact(this);
+        comment.setArtefactID(this.getID());
+    }
+
+    public void removeComment(Comment comment) {
+        commentList.remove(comment);
+    }
+
 }
 
 

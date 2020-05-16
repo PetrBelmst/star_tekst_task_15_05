@@ -71,5 +71,40 @@ public class EntityObjectServiceImpl implements EntityObjectService {
 
     }
 
+    @Override
+    public Optional<EntityObject> findByCategory(String category) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<EntityObject> findByUser(String userID) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<EntityObject> findByDescription(String description) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<EntityObject> findByComment(String content) {
+        return Optional.empty();
+    }
+
+    @Override
+    public List<EntityObject> sortByDate() {
+        return null;
+    }
+
+    @Override
+    public List<EntityObject> sortByCategory() {
+        return null;
+    }
+
+    @Override
+    public List<EntityObject> sortByUser() {
+        return null;
+    }
+
 
 }
