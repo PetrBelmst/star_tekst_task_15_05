@@ -1,8 +1,7 @@
 package com.example.demo.service;
 
-import static com.example.demo.model.EntityType.ARTEFACT;
-import static com.example.demo.model.EntityType.COMMENT;
 
+import com.example.demo.exceptions.NotFoundException;
 import com.example.demo.model.Artefact;
 import com.example.demo.model.Comment;
 import com.example.demo.model.EntityObject;
@@ -39,12 +38,12 @@ public class EntityObjectServiceImpl implements EntityObjectService {
     }
 
     @Override
-    public List<Optional<EntityObject>> readAll(Enum type) {
-        List<Optional<EntityObject>> list = new ArrayList<>();
-        if (ARTEFACT.equals(type)) {
-            artefactRepository.findAll().forEach(e -> list.add((Optional<EntityObject>) e));
-        } else if (COMMENT.equals(type)) {
-            commentRepository.findAll().forEach(e -> list.add((Optional<EntityObject>) e));
+    public List<Optional<? extends EntityObject>> readAll(String type) {
+        List<Optional<? extends EntityObject>> list = new ArrayList<>();
+        if (type.equalsIgnoreCase("artefact")) {
+            artefactRepository.findAll().forEach(e -> list.add((Optional<Artefact>) e));
+        } else if (type.equalsIgnoreCase("comment")) {
+            commentRepository.findAll().forEach(e -> list.add((Optional<Comment>) e));
         } else {
             throw new IllegalArgumentException();
         }
@@ -52,14 +51,21 @@ public class EntityObjectServiceImpl implements EntityObjectService {
     }
 
     @Override
-    public Optional<EntityObject> read(Long id) {
+    public Optional<? extends EntityObject> read(Long id) {
         return artefactRepository.findById(id) ==  Optional.empty()
                ? commentRepository.findById(id)
                : artefactRepository.findById(id);
     }
 
+    //расширенное задание: для операций UPDATE хранить предыдущие версии объектов
     @Override
-    public Optional<EntityObject> update(Long id) {
+    public Optional<? extends EntityObject> update(Long id, EntityObject updObject) throws NotFoundException {
+        Optional<? extends EntityObject> object = null;
+        if (artefactRepository.findById(id).isPresent()) {
+            object = (Optional <Artefact>) artefactRepository.findById(id);
+        } else if (commentRepository.findById(id).isPresent()) {
+            object = (Optional <Comment>) artefactRepository.findById(id);
+        } else throw new NotFoundException();
 
         return null;
 

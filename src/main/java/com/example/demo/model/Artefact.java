@@ -23,11 +23,11 @@ public class Artefact implements EntityObject {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "ARTEFACT_ID", updatable = false, nullable = false)
+    @Column(name = "ARTEFACT_ID", nullable = false)
     @Type(type = "uuid-char")
     private UUID ID;
 
-    @Column(name = "Creation_Time", updatable = false, nullable = false)
+    @Column(name = "Creation_Time", nullable = false)
     private LocalDateTime Created;
 
     @Column(name = "User_ID", nullable = false)
@@ -51,6 +51,11 @@ public class Artefact implements EntityObject {
     public void removeComment(Comment comment) {
         commentList.remove(comment);
     }
+    @Transient
+    private static final String TYPE = "ARTEFACT";
+
+    @Column(name = "Was_Updated", nullable = false)
+    private boolean isChanged = false;
 
 }
 

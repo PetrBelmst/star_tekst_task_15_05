@@ -19,14 +19,14 @@ public class Comment implements EntityObject {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "ID", updatable = false, nullable = false)
+    @Column(name = "ID", nullable = false)
     @Type(type = "uuid-char")
     private UUID ID;
 
-    @Column(name = "ARTEFACT_ID", updatable = false, nullable = false)
+    @Column(name = "ARTEFACT_ID", nullable = false)
     private UUID ArtefactID;
 
-    @Column(name = "User_ID", updatable = false, nullable = false)
+    @Column(name = "User_ID", nullable = false)
     private String UserID;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -35,5 +35,10 @@ public class Comment implements EntityObject {
 
     private String Content;
 
+    @Transient
+    private static final String TYPE = "COMMENT";
+
+    @Column(name = "Was_Updated", nullable = false)
+    private boolean isChanged = false;
 
 }

@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.exceptions.NotFoundException;
 import com.example.demo.model.EntityObject;
 import org.hibernate.exception.DataException;
 
@@ -8,9 +9,9 @@ import java.util.Optional;
 
 public interface EntityObjectService {
     EntityObject create (EntityObject object);
-    List <Optional<EntityObject>> readAll(Enum type);
-    Optional<EntityObject> read(Long id);
-    Optional<EntityObject> update (Long id);
+    List <Optional<? extends EntityObject>> readAll(String type);
+    Optional<? extends EntityObject> read(Long id);
+    Optional<? extends EntityObject> update (Long id, EntityObject updObject) throws NotFoundException;
     void delete (Long id);
 
     Optional<EntityObject> findByCategory(String category);
