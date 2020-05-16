@@ -81,39 +81,37 @@ public class ArtefactService implements AnyEntityObjectService <Artefact, Artefa
     }
 
 
-    public Optional<EntityObject> findByCategory(String category) {
-        return Optional.empty();
+    public List<Artefact> findByCategory(String category) {
+        return artefactRepository.findByCategory(category);
     }
 
 
-    public Optional<EntityObject> findByUser(String userID) {
-        return Optional.empty();
+    public List<Artefact> findByUser(String userID) {
+        return artefactRepository.findByUserID(userID);
     }
 
 
-    public Optional<EntityObject> findByDescription(String description) {
-        return Optional.empty();
+    public List<Artefact> findByDescription(String description) {
+        return artefactRepository.findByDescription(description);
     }
 
 
-    public Optional<EntityObject> findByComment(String content) {
-        return Optional.empty();
+    public List<Artefact> findByComment(String content) {
+        return artefactRepository.findByCommentListContaining_Content(content);
     }
 
 
-    public List<EntityObject> sortByDate() {
-        return null;
+    public List<Artefact> sortByDate() {
+        return artefactRepository.findAllByOrderByCreatedAsc();
     }
 
 
-    public List<EntityObject> sortByCategory() {
-        return null;
+    public List<Artefact> sortByCategory() {
+        return artefactRepository.findAllByOrderByCategoryCategoryAsc();
     }
 
 
-    public List<EntityObject> sortByUser() {
-        return null;
+    public List<Artefact> sortByUser() {
+        return artefactRepository.findAllByOrderByUserIDUserIDAsc();
     }
-
-
 }

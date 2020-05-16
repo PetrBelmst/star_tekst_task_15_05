@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 import com.example.demo.exceptions.NotFoundException;
-import com.example.demo.model.Artefact;
 import com.example.demo.model.Comment;
 import com.example.demo.model.EntityObject;
 import com.example.demo.repository.AnyEntityObjectRepository;

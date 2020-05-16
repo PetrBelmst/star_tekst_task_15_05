@@ -15,4 +15,6 @@ public interface AnyEntityObjectService <E extends EntityObject, R extends AnyEn
     Optional<? extends EntityObject> update (Long id, EntityObject updObject) throws NotFoundException;
     void delete (Long id);
 
+
+
 }
