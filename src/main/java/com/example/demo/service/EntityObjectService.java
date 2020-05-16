@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface EntityObjectService {
-    void create (EntityObject object);
-    List <Optional<EntityObject>> readAll();
-    Optional<EntityObject> read();
-    void update (Long id);
+    EntityObject create (EntityObject object);
+    List <Optional<EntityObject>> readAll(Enum type);
+    Optional<EntityObject> read(Long id);
+    Optional<EntityObject> update (Long id);
     void delete (Long id);
 
 
