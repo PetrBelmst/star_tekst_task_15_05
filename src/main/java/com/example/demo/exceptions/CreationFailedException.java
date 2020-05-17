@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class NotFoundException extends RuntimeException {
-    String message  = "item not found in DB";
+public class CreationFailedException extends RuntimeException {
+    String message  = "smth goes wrong during creation";
 }

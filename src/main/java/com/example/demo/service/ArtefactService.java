@@ -24,29 +24,29 @@ public class ArtefactService implements AnyEntityObjectService <Artefact, Artefa
 
 
     @Override
-    public EntityObject create (EntityObject object) {
+    public Optional <Artefact> create (EntityObject object) {
         if (object instanceof Artefact) {
-            return (Artefact) artefactRepository.save(object);
+            return Optional.of((Artefact) artefactRepository.save(object));
         } else throw new IllegalArgumentException();
 
     }
 
     @Override
-    public List<EntityObject> readAll () {
-        List<EntityObject> list = new ArrayList<>();
+    public List<Artefact> readAll () {
+        List<Artefact> list = new ArrayList<>();
         artefactRepository.findAll().forEach(e -> list.add((Artefact) e));
         return list;
     }
 
     @Override
-    public Optional<? extends EntityObject> read (Long id) throws Throwable {
+    public Optional<Artefact> read (Long id) throws Throwable {
         return (Optional<Artefact>) artefactRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException());
     }
 
     //расширенное задание: для операций UPDATE хранить предыдущие версии объектов
     @Override
-    public Optional<? extends EntityObject> update(Long id, EntityObject objectNew) throws NotFoundException {
+    public Optional<Artefact> update(Long id, EntityObject objectNew) throws NotFoundException {
         Optional<Artefact> objectOriginal;
 
         if (artefactRepository.findById(id).isPresent()) {

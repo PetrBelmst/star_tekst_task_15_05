@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.exceptions.NotFoundException;
+import com.example.demo.model.Artefact;
 import com.example.demo.model.Comment;
 import com.example.demo.model.EntityObject;
 import com.example.demo.repository.AnyEntityObjectRepository;
@@ -24,27 +25,27 @@ public class CommentService implements AnyEntityObjectService <Comment, CommentR
 
 
     @Override
-    public EntityObject create(EntityObject object) {
+    public Optional <Comment> create(EntityObject object) {
         if (object instanceof Comment) {
-            return (Comment) commentRepository.save(object);
+            return Optional.of((Comment) commentRepository.save(object));
         } else throw new IllegalArgumentException();
     }
 
     @Override
-    public List<EntityObject> readAll() {
-        List<EntityObject> list = new ArrayList<>();
+    public List<Comment> readAll() {
+        List<Comment> list = new ArrayList<>();
         commentRepository.findAll().forEach(e -> list.add((Comment) e));
         return list;
     }
 
     @Override
-    public Optional<? extends EntityObject> read(Long id) throws Throwable {
+    public Optional<Comment> read(Long id) throws Throwable {
         return (Optional<Comment>) commentRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException());
     }
 
     @Override
-    public Optional<? extends EntityObject> update(Long id, EntityObject objectNew) throws NotFoundException {
+    public Optional<Comment> update(Long id, EntityObject objectNew) throws NotFoundException {
         Optional<Comment> objectOriginal;
 
         if (commentRepository.findById(id).isPresent()) {
