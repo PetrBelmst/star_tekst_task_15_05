@@ -86,7 +86,7 @@ public class ArtefactService implements AnyEntityObjectService <Artefact, Artefa
     }
 
 
-    public List<Artefact> findByUser(String userID) {
+    public Artefact findByUser(String userID) {
         return artefactRepository.findByUserID(userID);
     }
 
