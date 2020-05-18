@@ -8,11 +8,11 @@ import java.util.List;
 @NoRepositoryBean
 public interface AnyEntityObjectRepository <E extends EntityObject> extends JpaRepository<E, Long> {
 
-    List<Artefact> findByCategory(String categoryPart);
-    List<Artefact> findByUserID(String userID);
-    List<Artefact> findByDescription(String description);
-    List<Artefact> findByCommentListContaining_Content(String content);
-    List<Artefact> findAllByOrderByCreatedAsc();
-    List<Artefact> findAllByOrderByCategoryCategoryAsc();
-    List<Artefact> findAllByOrderByUserIDUserIDAsc();
+    List<Artefact> findAllByCategory(String category);
+    Artefact findByUserID(String userID);
+    List<Artefact> findAllByDescription(String description);
+    List<Artefact> findAllByCommentListContaining_Content(String content);
+    List<Artefact> findByOrderByCreatedAsc();
+    List<Artefact> findByOrderByCategoryAsc();
+    List<Artefact> findByOrderByUserIDAsc();
 }

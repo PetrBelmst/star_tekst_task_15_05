@@ -3,7 +3,7 @@ import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -19,12 +19,12 @@ public class Artefact implements EntityObject {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "ARTEFACT_ID", nullable = false)
+    @Column(name = "ARTEFACT_ID", nullable = false, insertable = false, updatable = false)
     @Type(type = "uuid-char")
     private UUID ID;
 
     @Column(name = "Creation_Time", nullable = false)
-    private LocalDateTime Created;
+    private LocalDate Created;
 
     @Column(name = "User_ID", nullable = false)
     private String UserID;

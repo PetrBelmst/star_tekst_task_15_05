@@ -17,11 +17,11 @@ public class Comment implements EntityObject {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "ID", nullable = false)
+    @Column(name = "ID", nullable = false, insertable = false, updatable = false)
     @Type(type = "uuid-char")
     private UUID ID;
 
-    @Column(name = "ARTEFACT_ID", nullable = false)
+    @Column(name = "ARTEFACT_ID", nullable = false, insertable = false, updatable = false)
     private UUID ArtefactID;
 
     @Column(name = "User_ID", nullable = false)
