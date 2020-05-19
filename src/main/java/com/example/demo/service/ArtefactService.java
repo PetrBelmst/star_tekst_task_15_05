@@ -81,37 +81,37 @@ public class ArtefactService implements AnyEntityObjectService <Artefact, Artefa
     }
 
 
-    public List<Artefact> findByCategory(String category) {
-        return artefactRepository.findAllByCategory(category);
-    }
+//    public List<Artefact> findByCategory(String category) {
+//        return artefactRepository.findAllByCategory(category);
+//    }
+//
+//
+//    public Artefact findByUser(String userID) {
+//        return artefactRepository.findByUserID(userID);
+//    }
+//
+//
+//    public List<Artefact> findByDescription(String description) {
+//        return artefactRepository.findAllByDescription(description);
+//    }
 
 
-    public Artefact findByUser(String userID) {
-        return artefactRepository.findByUserID(userID);
-    }
+//    public List<Artefact> findByComment(String content) {
+//        return artefactRepository.findAllByCommentListContaining_Content(content);
+//    }
 
 
-    public List<Artefact> findByDescription(String description) {
-        return artefactRepository.findAllByDescription(description);
-    }
-
-
-    public List<Artefact> findByComment(String content) {
-        return artefactRepository.findAllByCommentListContaining_Content(content);
-    }
-
-
-    public List<Artefact> sortByDate() {
-        return artefactRepository.findByOrderByCreatedAsc();
-    }
-
-
-    public List<Artefact> sortByCategory() {
-        return artefactRepository.findByOrderByCategoryAsc();
-    }
-
-
-    public List<Artefact> sortByUser() {
-        return artefactRepository.findByOrderByUserIDAsc();
-    }
+//    public List<Artefact> sortByDate() {
+//        return artefactRepository.findByOrderByCreatedAsc();
+//    }
+//
+//
+//    public List<Artefact> sortByCategory() {
+//        return artefactRepository.findByOrderByCategoryAsc();
+//    }
+//
+//
+//    public List<Artefact> sortByUser() {
+//        return artefactRepository.findByOrderByUserIDAsc();
+//    }
 }
